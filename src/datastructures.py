@@ -14,11 +14,11 @@ class FamilyStructure:
         self.last_name = last_name
 
         # example list of members
-        self._members = [{
+        self._family_members = [{
             "id": self._generateId(),
-            "first_name": "John",
+            "first_name": "Richard",
             "last_name": self.last_name,
-            "age": 33,
+            "age": 34,
             "lucky_numbers": []
         }]
 
@@ -28,48 +28,48 @@ class FamilyStructure:
 
     def add_member(self, member):
         # fill this method and update the return
-        adding_member = {}
+        adding_family_member = {}
 
         if 'id' in member:
             member['id']
-            adding_member['id'] = int(member['id'])
+            adding_family_member['id'] = int(member['id'])
         else:
-            adding_member['id'] = self._generateId()
+            adding_family_member['id'] = self._generateId()
 
-        adding_member['first_name'] = str(member['first_name'])
-        adding_member['last_name'] = self.last_name
-        adding_member['age'] = int(member['age'])
-        adding_member['lucky_numbers'] = member['lucky_numbers']
+        adding_family_member['first_name'] = str(member['first_name'])
+        adding_family_member['last_name'] = self.last_name
+        adding_family_member['age'] = int(member['age'])
+        adding_family_member['lucky_numbers'] = member['lucky_numbers']
 
-        self._members.append(adding_member)
+        self._family_members.append(adding_member)
         print(adding_member)
-
-        return None
-
-    def delete_member(self, id):
-        # fill this method and update the return
-        for position in range(len(self._members)):
-            if self._members[position]["id"] == int(id):
-                self._members.pop(position)
-                return {"done": True}
-
-        return None
-
-    def get_member(self, id):
-        # fill this method and update the return
-        for integrante in self._members:
-            if integrante["id"] == int(id):
-                return integrante
 
         return None
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
-        return self._members
+        return self._family_members
+
+    def get_member(self, id):
+        # fill this method and update the return
+        for member in self._family_members:
+            if member["id"] == int(id):
+                return member
+
+        return None
 
     # método para actualizar familiares
     def update_member(self, id, member):
-        for position in range(len(self._members)):
-            if self._members[position]["id"] == int(id):
-                self._members[position].update(member)
+        for member in range(len(self._family_members)):
+            if self._family_members[member]["id"] == int(id):
+                self._family_members[member].update(member)
                 return {"done": True}
+
+    def delete_member(self, id):
+        # fill this method and update the return
+        for member in range(len(self._family_members)):
+            if self._family_members[member]["id"] == int(id):
+                self._family_members.pop(member)
+                return {"done": True}
+
+        return None
